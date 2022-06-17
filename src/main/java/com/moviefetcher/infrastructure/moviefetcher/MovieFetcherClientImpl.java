@@ -13,7 +13,7 @@ import java.util.List;
 public class MovieFetcherClientImpl implements MovieFetcherClient {
 
     private final String baseUrl;
-    private final String TRENDING_WEEK_URL = "/movies/trending/week";
+    private final String TRENDING_WEEK_URL = "/trending/movie/day";
 
     @Autowired
     public MovieFetcherClientImpl(@Value("${movie.fetcher.base.url}") String baseUrl) {

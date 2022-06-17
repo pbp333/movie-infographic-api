@@ -1,5 +1,7 @@
 package com.moviefetcher.application;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,49 +9,56 @@ import java.util.List;
 
 public class Movie {
 
+    private final int id;
+    @JsonProperty("backdrop_path")
+    private final String backDropPath;
+    @JsonProperty("poster_path")
     private final String posterPath;
-    private final boolean adult;
     private final String overview;
-    private final LocalDate releaseDate;
-    private final List<String> genres = new ArrayList<>();
+    @JsonProperty("genre_ids")
+    private final List<Integer> genres = new ArrayList<>();
+    @JsonProperty("original_title")
     private final String originalTitle;
-    private final String originalLanguage;
+    private final String name;
+    @JsonProperty("original_name")
+    private final String originalName;
     private final String title;
-    private final BigDecimal popularity;
+    @JsonProperty("vote_count")
     private final int voteCount;
+    @JsonProperty("vote_average")
     private final BigDecimal voteAverage;
 
     private Movie(Builder builder) {
+        this.id = builder.id;
+        this.backDropPath = builder.backDropPath;
         this.posterPath = builder.posterPath;
-        this.adult = builder.adult;
         this.overview = builder.overview;
-        this.releaseDate = builder.releaseDate;
         this.genres.addAll(builder.genres);
         this.originalTitle = builder.originalTitle;
-        this.originalLanguage = builder.originalLanguage;
+        this.name = builder.name;
         this.title = builder.title;
-        this.popularity = builder.popularity;
+        this.originalName = builder.originalName;
         this.voteCount = builder.voteCount;
         this.voteAverage = builder.voteAverage;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getBackDropPath() {
+        return backDropPath;
     }
 
     public String getPosterPath() {
         return posterPath;
     }
 
-    public boolean isAdult() {
-        return adult;
-    }
-
     public String getOverview() {
         return overview;
     }
 
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public List<String> getGenres() {
+    public List<Integer> getGenres() {
         return genres;
     }
 
@@ -57,16 +66,16 @@ public class Movie {
         return originalTitle;
     }
 
-    public String getOriginalLanguage() {
-        return originalLanguage;
+    public String getName() {
+        return name;
+    }
+
+    public String getOriginalName() {
+        return originalName;
     }
 
     public String getTitle() {
         return title;
-    }
-
-    public BigDecimal getPopularity() {
-        return popularity;
     }
 
     public int getVoteCount() {
@@ -77,17 +86,16 @@ public class Movie {
         return voteAverage;
     }
 
-
     public static final class Builder {
+        private int id;
+        private String backDropPath;
         private String posterPath;
-        private boolean adult;
         private String overview;
-        private LocalDate releaseDate;
-        private List<String> genres = new ArrayList<>();
+        private List<Integer> genres = new ArrayList<>();
         private String originalTitle;
-        private String originalLanguage;
+        private String name;
+        private String originalName;
         private String title;
-        private BigDecimal popularity;
         private int voteCount;
         private BigDecimal voteAverage;
 
@@ -98,13 +106,18 @@ public class Movie {
             return new Builder();
         }
 
+        public Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
         public Builder posterPath(String posterPath) {
             this.posterPath = posterPath;
             return this;
         }
 
-        public Builder adult(boolean adult) {
-            this.adult = adult;
+        public Builder backDropPath(String backDropPath) {
+            this.backDropPath = backDropPath;
             return this;
         }
 
@@ -113,12 +126,12 @@ public class Movie {
             return this;
         }
 
-        public Builder releaseDate(LocalDate releaseDate) {
-            this.releaseDate = releaseDate;
+        public Builder name(String name) {
+            this.name = name;
             return this;
         }
 
-        public Builder genres(List<String> genres) {
+        public Builder genres(List<Integer> genres) {
             this.genres = genres;
             return this;
         }
@@ -128,18 +141,13 @@ public class Movie {
             return this;
         }
 
-        public Builder originalLanguage(String originalLanguage) {
-            this.originalLanguage = originalLanguage;
+        public Builder originalName(String originalName) {
+            this.originalName = originalName;
             return this;
         }
 
         public Builder title(String title) {
             this.title = title;
-            return this;
-        }
-
-        public Builder popularity(BigDecimal popularity) {
-            this.popularity = popularity;
             return this;
         }
 

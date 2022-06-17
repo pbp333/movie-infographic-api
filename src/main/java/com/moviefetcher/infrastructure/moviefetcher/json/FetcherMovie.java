@@ -6,20 +6,37 @@ import java.util.List;
 
 public class FetcherMovie {
 
-    private String posterPath;
-    private boolean adult;
-    private String overview;
-    private String releaseDate;
-    private List<String> genres = new ArrayList<>();
-    private String originalTitle;
-    private String originalLanguage;
-    private String title;
-    private BigDecimal popularity;
-    private int voteCount;
-    private BigDecimal voteAverage;
+    private  int id;
+    private  String backDropPath;
+    private  String posterPath;
+    private  String overview;
+    private  List<Integer> genres = new ArrayList<>();
+    private  String originalTitle;
+    private  String name;
+    private  String originalName;
+    private  String title;
+    private  int voteCount;
+    private  BigDecimal voteAverage;
+
 
     public FetcherMovie() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getBackDropPath() {
+        return backDropPath;
+    }
+
+    public void setBackDropPath(String backDropPath) {
+        this.backDropPath = backDropPath;
     }
 
     public String getPosterPath() {
@@ -30,14 +47,6 @@ public class FetcherMovie {
         this.posterPath = posterPath;
     }
 
-    public boolean isAdult() {
-        return adult;
-    }
-
-    public void setAdult(boolean adult) {
-        this.adult = adult;
-    }
-
     public String getOverview() {
         return overview;
     }
@@ -46,19 +55,11 @@ public class FetcherMovie {
         this.overview = overview;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public List<String> getGenres() {
+    public List<Integer> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<String> genres) {
+    public void setGenres(List<Integer> genres) {
         this.genres = genres;
     }
 
@@ -70,12 +71,20 @@ public class FetcherMovie {
         this.originalTitle = originalTitle;
     }
 
-    public String getOriginalLanguage() {
-        return originalLanguage;
+    public String getName() {
+        return name;
     }
 
-    public void setOriginalLanguage(String originalLanguage) {
-        this.originalLanguage = originalLanguage;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOriginalName() {
+        return originalName;
+    }
+
+    public void setOriginalName(String originalName) {
+        this.originalName = originalName;
     }
 
     public String getTitle() {
@@ -84,14 +93,6 @@ public class FetcherMovie {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public BigDecimal getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(BigDecimal popularity) {
-        this.popularity = popularity;
     }
 
     public int getVoteCount() {
