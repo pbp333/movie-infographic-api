@@ -11,12 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/movies")
-public class MovieInfographyController {
+public class MovieInfographicController {
 
     private final MovieFetcher fetcher;
 
     @Autowired
-    public MovieInfographyController(MovieFetcher fetcher) {
+    public MovieInfographicController(MovieFetcher fetcher) {
         this.fetcher = fetcher;
     }
 
