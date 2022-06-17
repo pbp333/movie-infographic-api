@@ -4,6 +4,7 @@ import java.util.List;
 
 public interface MovieFetcher {
 
-    List<Movie> fetchMoviesByWeek();
+    List<Movie> fetchMoviesByInfographic(Long infographicId);
 
+    List<Infographic> fetchInfographics();
 }

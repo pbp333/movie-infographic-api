@@ -1,5 +1,6 @@
 package com.moviefetcher.infrastructure;
 
+import com.moviefetcher.application.Infographic;
 import com.moviefetcher.application.Movie;
 import com.moviefetcher.application.MovieFetcher;
 import com.moviefetcher.infrastructure.moviefetcher.MovieFetcherClient;
@@ -24,8 +25,13 @@ public class MovieFetcherImpl implements MovieFetcher {
     }
 
     @Override
-    public List<Movie> fetchMoviesByWeek() {
+    public List<Movie> fetchMoviesByInfographic(Long infographicId) {
         return client.fetchTrendingByWeek().stream().map(this::toMovie).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Infographic> fetchInfographics() {
+        return null;
     }
 
     private Movie toMovie(FetcherMovie fetcherMovie) {

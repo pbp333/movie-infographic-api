@@ -1,5 +1,6 @@
 package com.moviefetcher.api;
 
+import com.moviefetcher.application.Infographic;
 import com.moviefetcher.application.Movie;
 import com.moviefetcher.application.MovieFetcher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/trending")
+@RequestMapping(value = "/infographic")
 public class MovieInfographicController {
 
     private final MovieFetcher fetcher;
@@ -20,8 +21,13 @@ public class MovieInfographicController {
         this.fetcher = fetcher;
     }
 
-    @GetMapping("/movie/day")
-    public List<Movie> getTrendingByWeek() {
-        return fetcher.fetchMoviesByWeek();
+    @GetMapping()
+    public List<Infographic> getInfographics() {
+        return fetcher.fetchInfographics();
+    }
+
+        @GetMapping("/{infographicId}")
+    public List<Movie> getTrendingByWeek(Long infographicId) {
+        return fetcher.fetchMoviesByInfographic(infographicId);
     }
 }

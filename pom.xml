@@ -8,11 +8,11 @@
         <version>2.7.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.moviefetcher</groupId>
-    <artifactId>moviefetcher</artifactId>
+    <groupId>com.movieinfographic</groupId>
+    <artifactId>movieinfographic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>movie-fetcher</name>
+    <name>movie-infographic</name>
 
     <properties>
         <java.version>11</java.version>
