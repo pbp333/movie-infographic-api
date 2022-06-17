@@ -1,6 +1,4 @@
-package com.moviefetcher.infrastructure.tmdb.json;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.moviefetcher.infrastructure.moviefetcher.json;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

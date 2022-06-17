@@ -1,6 +1,6 @@
-package com.moviefetcher.infrastructure.tmdb;
+package com.moviefetcher.infrastructure.moviefetcher;
 
-import com.moviefetcher.infrastructure.tmdb.json.FetcherMovie;
+import com.moviefetcher.infrastructure.moviefetcher.json.FetcherMovie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

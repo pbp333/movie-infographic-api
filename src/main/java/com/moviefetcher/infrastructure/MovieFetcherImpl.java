@@ -2,8 +2,8 @@ package com.moviefetcher.infrastructure;
 
 import com.moviefetcher.application.Movie;
 import com.moviefetcher.application.MovieFetcher;
-import com.moviefetcher.infrastructure.tmdb.MovieFetcherClient;
-import com.moviefetcher.infrastructure.tmdb.json.FetcherMovie;
+import com.moviefetcher.infrastructure.moviefetcher.MovieFetcherClient;
+import com.moviefetcher.infrastructure.moviefetcher.json.FetcherMovie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
