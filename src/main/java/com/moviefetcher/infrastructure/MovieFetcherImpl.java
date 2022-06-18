@@ -1,16 +1,12 @@
 package com.moviefetcher.infrastructure;
 
-import com.moviefetcher.application.Infographic;
-import com.moviefetcher.application.Movie;
 import com.moviefetcher.application.MovieFetcher;
+import com.moviefetcher.application.domain.Movie;
 import com.moviefetcher.infrastructure.moviefetcher.MovieFetcherClient;
 import com.moviefetcher.infrastructure.moviefetcher.json.FetcherMovie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,13 +21,8 @@ public class MovieFetcherImpl implements MovieFetcher {
     }
 
     @Override
-    public List<Movie> fetchMoviesByInfographic(Long infographicId) {
+    public List<Movie> fetchMovies() {
         return client.fetchTrendingByWeek().stream().map(this::toMovie).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Infographic> fetchInfographics() {
-        return null;
     }
 
     private Movie toMovie(FetcherMovie fetcherMovie) {

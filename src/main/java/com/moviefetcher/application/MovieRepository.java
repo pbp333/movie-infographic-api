@@ -4,7 +4,7 @@ import com.moviefetcher.application.domain.Movie;
 
 import java.util.List;
 
-public interface MovieFetcher {
+public interface MovieRepository {
 
-    List<Movie> fetchMovies();
+    List<Movie> listByInfographicId(Long infographicId, int page, int size);
 }

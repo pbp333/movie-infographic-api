@@ -6,28 +6,28 @@ import java.util.List;
 
 public class FetcherMovie {
 
-    private  int id;
-    private  String backDropPath;
-    private  String posterPath;
-    private  String overview;
-    private  List<Integer> genres = new ArrayList<>();
-    private  String originalTitle;
-    private  String name;
-    private  String originalName;
-    private  String title;
-    private  int voteCount;
-    private  BigDecimal voteAverage;
+    private Long id;
+    private String backDropPath;
+    private String posterPath;
+    private String overview;
+    private List<Integer> genres = new ArrayList<>();
+    private String originalTitle;
+    private String name;
+    private String originalName;
+    private String title;
+    private int voteCount;
+    private BigDecimal voteAverage;
 
 
     public FetcherMovie() {
 
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

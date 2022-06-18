@@ -1,13 +1,12 @@
-package com.moviefetcher.application;
+package com.moviefetcher.api.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class MovieJson {
 
     private final int id;
     @JsonProperty("backdrop_path")
@@ -28,7 +27,7 @@ public class Movie {
     @JsonProperty("vote_average")
     private final BigDecimal voteAverage;
 
-    private Movie(Builder builder) {
+    private MovieJson(Builder builder) {
         this.id = builder.id;
         this.backDropPath = builder.backDropPath;
         this.posterPath = builder.posterPath;
@@ -161,8 +160,8 @@ public class Movie {
             return this;
         }
 
-        public Movie build() {
-            return new Movie(this);
+        public MovieJson build() {
+            return new MovieJson(this);
         }
     }
 }
