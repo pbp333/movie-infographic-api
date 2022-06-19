@@ -1,7 +1,7 @@
 package com.moviefetcher.application.domain;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,33 +15,26 @@ public class Infographic {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany(mappedBy = "infographic", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "INFOGRAPHIC_ID")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Movie> movies = new ArrayList<>();
 
     @Column(name = "CREATION_DATE", columnDefinition = "TIMESTAMP(6)")
-    private LocalDateTime creationDate;
+    private LocalDate creationDate;
 
     private Infographic() {
 
     }
 
-    private Infographic(List<Movie> movies, LocalDateTime creationDate) {
+    private Infographic(List<Movie> movies, LocalDate creationDate) {
         this.movies = movies;
         this.creationDate = creationDate;
-    }
 
-    private Infographic(Long id, List<Movie> movies, LocalDateTime creationDate) {
-        this.id = id;
-        this.movies = movies;
-        this.creationDate = creationDate;
-    }
-
-    public static Infographic from(Long id, List<Movie> movies, LocalDateTime creationDate) {
-        return new Infographic(id, movies, creationDate);
+        this.movies.stream().forEach(movie -> movie.setInfographic(this));
     }
 
     public static Infographic fromNow(List<Movie> movies) {
-        return new Infographic(movies, LocalDateTime.now());
+        return new Infographic(movies, LocalDate.now());
     }
 
     public Long getId() {
@@ -52,7 +45,7 @@ public class Infographic {
         return Collections.unmodifiableList(movies);
     }
 
-    public LocalDateTime getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 }

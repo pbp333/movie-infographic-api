@@ -5,8 +5,10 @@ import com.moviefetcher.application.MovieFetcher;
 import com.moviefetcher.application.domain.Infographic;
 import com.moviefetcher.application.domain.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
@@ -21,13 +23,24 @@ public class InfographicCreator {
         this.repository = repository;
     }
 
+    @Scheduled(fixedRate = 3600000)
     public void createInfographic() {
 
-        List<Movie> movies = fetcher.fetchMovies();
+        System.out.println("Initiating schedule job:");
 
-        var infographic = Infographic.fromNow(movies);
+        var todayInfographicsAlreadyExists = repository.existsByCreationDate(LocalDate.now());
 
-        repository.save(infographic);
+        if (todayInfographicsAlreadyExists) {
+            System.out.println("Skipping Infographic creation, already exists one today.");
 
+        } else {
+            System.out.println("Creating today's Infographic");
+
+            List<Movie> movies = fetcher.fetchMovies();
+
+            var infographic = Infographic.fromNow(movies);
+
+            repository.save(infographic);
+        }
     }
 }

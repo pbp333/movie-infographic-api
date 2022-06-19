@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MovieJson {
 
-    private final int id;
+    private final Long id;
     @JsonProperty("backdrop_path")
     private final String backDropPath;
     @JsonProperty("poster_path")
@@ -41,7 +41,7 @@ public class MovieJson {
         this.voteAverage = builder.voteAverage;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -86,7 +86,7 @@ public class MovieJson {
     }
 
     public static final class Builder {
-        private int id;
+        private Long id;
         private String backDropPath;
         private String posterPath;
         private String overview;
@@ -105,7 +105,7 @@ public class MovieJson {
             return new Builder();
         }
 
-        public Builder id(int id) {
+        public Builder id(Long id) {
             this.id = id;
             return this;
         }

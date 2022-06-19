@@ -28,7 +28,7 @@ public class MovieFetcherImpl implements MovieFetcher {
     private Movie toMovie(FetcherMovie fetcherMovie) {
         Movie.Builder builder = Movie.Builder.with();
 
-        builder.id(fetcherMovie.getId());
+        builder.movieId(fetcherMovie.getId());
         builder.posterPath(fetcherMovie.getPosterPath());
         builder.backDropPath(fetcherMovie.getBackDropPath());
         builder.overview(fetcherMovie.getOverview());

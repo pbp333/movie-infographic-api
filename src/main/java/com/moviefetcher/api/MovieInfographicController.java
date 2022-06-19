@@ -1,14 +1,14 @@
 package com.moviefetcher.api;
 
+import com.moviefetcher.api.json.InfographicJson;
+import com.moviefetcher.api.json.MovieJson;
 import com.moviefetcher.application.api.MovieInfographicsService;
-import com.moviefetcher.application.domain.Infographic;
-import com.moviefetcher.application.domain.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/infographics")
@@ -23,17 +23,19 @@ public class MovieInfographicController extends ErrorController {
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Infographic> getInfographics() {
-        return service.listInfographics();
+    public List<InfographicJson> getInfographics() {
+        return service.listInfographics().stream().map(JsonMapper::toJson).collect(Collectors.toList());
     }
 
-    @GetMapping("/{infographicId}")
+    @GetMapping("/{infographicId}/movies")
     @ResponseStatus(HttpStatus.OK)
-    public List<Movie> getTrendingByWeek(@PathParam("infographicId") Long infographicId, @RequestParam("page") int page, @RequestParam("size") int size) {
+    public List<MovieJson> getTrendingByWeek(@PathVariable("infographicId") Long infographicId,
+                                             @RequestParam("page") int page,
+                                             @RequestParam("size") int size) {
 
         validatePageAndSize(page, size);
 
-        return service.listByInfographicId(infographicId, page, size);
+        return service.listByInfographicId(infographicId, page, size).stream().map(JsonMapper::toJson).collect(Collectors.toList());
     }
 
     @PostMapping("/create")

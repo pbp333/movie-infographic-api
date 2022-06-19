@@ -14,9 +14,12 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
     @JoinColumn(name = "INFOGRAPHIC_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
     private Infographic infographic;
+
+    @Column(name = "MOVIE_ID")
+    private Long movieId;
 
     @Column(name = "BACK_DROP_PATH")
     private String backDropPath;
@@ -24,6 +27,7 @@ public class Movie {
     @Column(name = "POSTER_PATH")
     private String posterPath;
 
+    @Lob
     @Column(name = "OVERVIEW")
     private String overview;
 
@@ -54,7 +58,7 @@ public class Movie {
     }
 
     private Movie(Builder builder) {
-        this.id = builder.id;
+        this.movieId = builder.movieId;
         this.backDropPath = builder.backDropPath;
         this.posterPath = builder.posterPath;
         this.overview = builder.overview;
@@ -73,6 +77,10 @@ public class Movie {
 
     public Infographic getInfographic() {
         return infographic;
+    }
+
+    public Long getMovieId() {
+        return movieId;
     }
 
     public String getBackDropPath() {
@@ -115,8 +123,12 @@ public class Movie {
         return voteAverage;
     }
 
+    public void setInfographic(Infographic infographic) {
+        this.infographic = infographic;
+    }
+
     public static final class Builder {
-        private Long id;
+        private Long movieId;
         private String backDropPath;
         private String posterPath;
         private String overview;
@@ -135,8 +147,8 @@ public class Movie {
             return new Builder();
         }
 
-        public Builder id(Long id) {
-            this.id = id;
+        public Builder movieId(Long movieId) {
+            this.movieId = movieId;
             return this;
         }
 

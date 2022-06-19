@@ -20,6 +20,6 @@ public class MovieRepositoryImpl implements MovieRepository {
 
     @Override
     public List<Movie> listByInfographicId(Long infographicId, int page, int size) {
-        return jpaRepository.findByInfographicId(infographicId, PageRequest.of(page, size));
+        return jpaRepository.findAllByInfographic_IdOrderByVoteAverageDesc(infographicId, PageRequest.of(page - 1, size));
     }
 }
